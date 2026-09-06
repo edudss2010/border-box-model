@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS border — guia interativo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div class="hint">← → para navegar</div>
+<div class="counter"><span id="counterNow">1</span> / <span id="counterTotal">11</span></div>
+
+<div class="deck">
+
+  <!-- SLIDE 0: TITULO -->
+  <section class="slide active">
+    <div class="eyebrow">CSS · propriedades visuais</div>
+    <h1>A propriedade <span class="accent">border</span></h1>
+    <p>Um guia interativo sobre como desenhar, colorir e moldar as bordas de qualquer elemento — com controles ao vivo em cada slide para você ver o CSS acontecendo.</p>
+    <p class="footer-note">Use as setas do teclado ou os botões abaixo para avançar.</p>
+  </section>
+
+  <!-- SLIDE 1: ANATOMIA -->
+  <section class="slide">
+    <div class="eyebrow">01 · Anatomia</div>
+    <h2>Toda borda tem três dimensões</h2>
+    <div class="split">
+      <div class="stage">
+        <div id="anatomyBox" class="demo-box" style="border: 6px solid #E8A33D;">width · style · color</div>
+      </div>
+      <div>
+        <ul class="plain">
+          <li><b>border-width</b> — a espessura da linha</li>
+          <li><b>border-style</b> — o traço (sólido, tracejado, pontilhado...)</li>
+          <li><b>border-color</b> — a cor da linha</li>
+        </ul>
+        <p>Essas três propriedades quase sempre aparecem juntas, e por isso existe uma forma abreviada — o <span class="teal">shorthand</span> — que vamos ver mais adiante.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 2: BORDER-STYLE -->
+  <section class="slide">
+    <div class="eyebrow">02 · border-style</div>
+    <h2>Nove traços possíveis</h2>
+    <div class="style-grid" id="styleGrid"></div>
+  </section>
+
+  <!-- SLIDE 3: BORDER-WIDTH -->
+  <section class="slide">
+    <div class="eyebrow">03 · border-width</div>
+    <h2>Controlando a espessura</h2>
+    <div class="split">
+      <div class="stage">
+        <div id="widthBox" class="demo-box" style="border-style:solid; border-color:#E8A33D; border-width:4px;">border-width</div>
+      </div>
+      <div class="controls">
+        <div class="ctrl-row">
+          <label>largura <span class="val" id="widthVal">4px</span></label>
+          <input type="range" id="widthSlider" min="0" max="30" value="4">
+        </div>
+        <div class="code-out" id="widthCode">border-width: 4px;</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4: BORDER-COLOR -->
+  <section class="slide">
+    <div class="eyebrow">04 · border-color</div>
+    <h2>Uma cor por lado, se você quiser</h2>
+    <div class="split">
+      <div class="stage">
+        <div id="colorBox" class="demo-box" style="border-style:solid; border-width:6px; border-color:#E8A33D;">border-color</div>
+      </div>
+      <div class="controls">
+        <div class="ctrl-row">
+          <label>cor</label>
+          <input type="color" id="colorPicker" value="#e8a33d">
+        </div>
+        <div class="code-out" id="colorCode">border-color: #e8a33d;</div>
+        <p class="footer-note">border-color aceita até 4 valores: topo, direita, baixo, esquerda — igual a margin e padding.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5: SHORTHAND -->
+  <section class="slide">
+    <div class="eyebrow">05 · shorthand</div>
+    <h2>As três propriedades em uma linha</h2>
+    <div class="split">
+      <div class="stage">
+        <div id="shortBox" class="demo-box" style="border: 5px dashed #6FA8A0;">border: 5px dashed teal</div>
+      </div>
+      <div class="controls">
+        <div class="ctrl-row">
+          <label>largura <span class="val" id="shortWidthVal">5px</span></label>
+          <input type="range" id="shortWidth" min="0" max="20" value="5">
+        </div>
+        <div class="ctrl-row">
+          <label>estilo</label>
+          <select id="shortStyle">
+            <option value="solid">solid</option>
+            <option value="dashed" selected>dashed</option>
+            <option value="dotted">dotted</option>
+            <option value="double">double</option>
+            <option value="groove">groove</option>
+          </select>
+        </div>
+        <div class="ctrl-row">
+          <label>cor</label>
+          <input type="color" id="shortColor" value="#6fa8a0">
+        </div>
+        <div class="code-out" id="shortCode">border: 5px dashed #6fa8a0;</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6: LADOS INDIVIDUAIS -->
+  <section class="slide">
+    <div class="eyebrow">06 · lados independentes</div>
+    <h2>top, right, bottom, left</h2>
+    <div class="split">
+      <div class="stage">
+        <div id="sidesBox" class="sides-stage"></div>
+      </div>
+      <div class="controls">
+        <p class="footer-note">Clique para ligar/desligar cada lado:</p>
+        <div class="btn-group">
+          <button class="toggle-btn on" data-side="Top">border-top</button>
+          <button class="toggle-btn on" data-side="Right">border-right</button>
+          <button class="toggle-btn on" data-side="Bottom">border-bottom</button>
+          <button class="toggle-btn on" data-side="Left">border-left</button>
+        </div>
+        <div class="code-out" id="sidesCode"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 7: BORDER-RADIUS -->
+  <section class="slide">
+    <div class="eyebrow">07 · border-radius</div>
+    <h2>Arredondando os quatro cantos</h2>
+    <div class="split">
+      <div class="stage">
+        <div id="radiusBox" class="demo-box" style="border: 5px solid #E8A33D; border-radius: 12px;">border-radius</div>
+      </div>
+      <div class="controls">
+        <div class="ctrl-row">
+          <label>todos os cantos <span class="val" id="radiusAllVal">12px</span></label>
+          <input type="range" id="radiusAll" min="0" max="80" value="12">
+        </div>
+        <div class="code-out" id="radiusCode">border-radius: 12px;</div>
+        <p class="footer-note">Em 50% nos dois eixos, uma caixa quadrada vira um círculo perfeito.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 8: BORDER-IMAGE -->
+  <section class="slide">
+    <div class="eyebrow">08 · border-image</div>
+    <h2>Bordas com gradiente ou textura</h2>
+    <div class="split">
+      <div class="stage">
+        <div id="imageBox" class="demo-box" style="border: 10px solid; border-image: linear-gradient(45deg, #E8A33D, #6FA8A0) 1;">border-image</div>
+      </div>
+      <div class="controls">
+        <div class="ctrl-row">
+          <label>ângulo do gradiente <span class="val" id="angleVal">45°</span></label>
+          <input type="range" id="angleSlider" min="0" max="360" value="45">
+        </div>
+        <div class="code-out" id="imageCode">border-image: linear-gradient(45deg, #E8A33D, #6FA8A0) 1;</div>
+        <p class="footer-note">border-image substitui border-color pela imagem — a espessura ainda vem de border-width.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 9: PLAYGROUND -->
+  <section class="slide">
+    <div class="eyebrow">09 · playground</div>
+    <h2>Monte sua própria borda</h2>
+    <div class="split">
+      <div class="stage">
+        <div id="playBox" class="demo-box" style="border: 4px solid #E8A33D; border-radius: 8px;">preview</div>
+      </div>
+      <div class="controls">
+        <div class="ctrl-row">
+          <label>largura <span class="val" id="playWidthVal">4px</span></label>
+          <input type="range" id="playWidth" min="0" max="24" value="4">
+        </div>
+        <div class="ctrl-row">
+          <label>raio <span class="val" id="playRadiusVal">8px</span></label>
+          <input type="range" id="playRadius" min="0" max="80" value="8">
+        </div>
+        <div class="ctrl-row">
+          <label>estilo</label>
+          <select id="playStyle">
+            <option value="solid" selected>solid</option>
+            <option value="dashed">dashed</option>
+            <option value="dotted">dotted</option>
+            <option value="double">double</option>
+            <option value="groove">groove</option>
+            <option value="ridge">ridge</option>
+          </select>
+        </div>
+        <div class="ctrl-row">
+          <label>cor</label>
+          <input type="color" id="playColor" value="#e8a33d">
+        </div>
+        <div class="code-out" id="playCode"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 10: EXERCICIO -->
+  <section class="slide">
+    <div class="eyebrow">10 · sua vez</div>
+    <h2>Digite um border e veja acontecer</h2>
+    <div class="split">
+      <div class="stage">
+        <div id="typeBox" class="demo-box">seu border aqui</div>
+      </div>
+      <div class="controls">
+        <div class="ctrl-row">
+          <label>propriedade <span class="teal">border</span></label>
+          <input type="text" id="typeInput" class="mono" placeholder="ex: 5px solid #E8A33D"
+            style="background:var(--surface-2); color:var(--paper); border:1px solid var(--line); border-radius:6px; padding:8px 10px; font-size:14px;">
+        </div>
+        <div class="code-out" id="typeCode">border: /* digite ao lado */;</div>
+        <p class="footer-note" id="typeFeedback">Use a fórmula <b class="accent">width style color</b> — por exemplo: <span class="teal">3px dashed tomato</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 11: RECAP -->
+  <section class="slide">
+    <div class="eyebrow">11 · resumo</div>
+    <h2>Cheatsheet</h2>
+    <ul class="plain">
+      <li><b>border: width style color;</b> — forma curta mais comum</li>
+      <li><b>border-top / -right / -bottom / -left</b> — controle por lado</li>
+      <li><b>border-radius</b> — cantos arredondados, aceita valores por canto</li>
+      <li><b>border-style</b> — precisa estar definido para a borda aparecer</li>
+      <li><b>border-image</b> — troca a cor por gradiente ou imagem</li>
+    </ul>
+    <p class="footer-note">Fim da apresentação — volte a qualquer slide pelos pontos abaixo.</p>
+  </section>
+
+</div>
+
+<div class="nav">
+  <button id="prevBtn">‹</button>
+  <div class="dots" id="dots"></div>
+  <button id="nextBtn">›</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  let current = 0;
+
+  const dotsWrap = document.getElementById('dots');
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(d);
+  });
+  document.getElementById('counterTotal').textContent = total;
+
+  function goTo(i){
+    slides[current].classList.remove('active');
+    dotsWrap.children[current].classList.remove('active');
+    current = (i + total) % total;
+    slides[current].classList.add('active');
+    dotsWrap.children[current].classList.add('active');
+    document.getElementById('counterNow').textContent = current + 1;
+  }
+  document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
+  document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
+  window.addEventListener('keydown', (e) => {
+    if(e.key === 'ArrowRight') goTo(current + 1);
+    if(e.key === 'ArrowLeft') goTo(current - 1);
+  });
+
+  // ---- SLIDE 2: style grid ----
+  const styles = ['solid','dashed','dotted','double','groove','ridge','inset','outset','none'];
+  const styleGrid = document.getElementById('styleGrid');
+  styles.forEach(s => {
+    const card = document.createElement('div');
+    card.className = 'style-card';
+    const swatch = document.createElement('div');
+    swatch.className = 'swatch';
+    swatch.style.border = '6px ' + s + ' #E8A33D';
+    if(s === 'none'){ swatch.style.border = '6px solid transparent'; }
+    const name = document.createElement('div');
+    name.className = 'name';
+    name.textContent = s;
+    card.appendChild(swatch);
+    card.appendChild(name);
+    styleGrid.appendChild(card);
+  });
+
+  // ---- SLIDE 3: border-width ----
+  const widthSlider = document.getElementById('widthSlider');
+  widthSlider.addEventListener('input', () => {
+    const v = widthSlider.value;
+    document.getElementById('widthVal').textContent = v + 'px';
+    document.getElementById('widthBox').style.borderWidth = v + 'px';
+    document.getElementById('widthCode').textContent = 'border-width: ' + v + 'px;';
+  });
+
+  // ---- SLIDE 4: border-color ----
+  const colorPicker = document.getElementById('colorPicker');
+  colorPicker.addEventListener('input', () => {
+    const v = colorPicker.value;
+    document.getElementById('colorBox').style.borderColor = v;
+    document.getElementById('colorCode').textContent = 'border-color: ' + v + ';';
+  });
+
+  // ---- SLIDE 5: shorthand ----
+  function updateShorthand(){
+    const w = document.getElementById('shortWidth').value;
+    const s = document.getElementById('shortStyle').value;
+    const c = document.getElementById('shortColor').value;
+    document.getElementById('shortWidthVal').textContent = w + 'px';
+    document.getElementById('shortBox').style.border = w + 'px ' + s + ' ' + c;
+    document.getElementById('shortCode').textContent = 'border: ' + w + 'px ' + s + ' ' + c + ';';
+  }
+  document.getElementById('shortWidth').addEventListener('input', updateShorthand);
+  document.getElementById('shortStyle').addEventListener('change', updateShorthand);
+  document.getElementById('shortColor').addEventListener('input', updateShorthand);
+
+  // ---- SLIDE 6: sides ----
+  const sidesState = {Top:true, Right:true, Bottom:true, Left:true};
+  const sidesBox = document.getElementById('sidesBox');
+  function renderSides(){
+    let code = '';
+    ['Top','Right','Bottom','Left'].forEach(side => {
+      const prop = 'border' + side;
+      if(sidesState[side]){
+        sidesBox.style[prop] = '6px solid #E8A33D';
+        code += 'border-' + side.toLowerCase() + ': 6px solid #E8A33D;\n';
+      } else {
+        sidesBox.style[prop] = 'none';
+      }
+    });
+    document.getElementById('sidesCode').textContent = code.trim() || '/* nenhum lado ativo */';
+  }
+  document.querySelectorAll('.toggle-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const side = btn.dataset.side;
+      sidesState[side] = !sidesState[side];
+      btn.classList.toggle('on', sidesState[side]);
+      renderSides();
+    });
+  });
+  renderSides();
+
+  // ---- SLIDE 7: radius ----
+  const radiusAll = document.getElementById('radiusAll');
+  radiusAll.addEventListener('input', () => {
+    const v = radiusAll.value;
+    document.getElementById('radiusAllVal').textContent = v + 'px';
+    document.getElementById('radiusBox').style.borderRadius = v + 'px';
+    document.getElementById('radiusCode').textContent = 'border-radius: ' + v + 'px;';
+  });
+
+  // ---- SLIDE 8: border-image ----
+  const angleSlider = document.getElementById('angleSlider');
+  angleSlider.addEventListener('input', () => {
+    const v = angleSlider.value;
+    document.getElementById('angleVal').textContent = v + '°';
+    const grad = 'linear-gradient(' + v + 'deg, #E8A33D, #6FA8A0) 1';
+    document.getElementById('imageBox').style.borderImage = grad;
+    document.getElementById('imageCode').textContent = 'border-image: ' + grad + ';';
+  });
+
+  // ---- SLIDE 9: playground ----
+  function updatePlay(){
+    const w = document.getElementById('playWidth').value;
+    const r = document.getElementById('playRadius').value;
+    const s = document.getElementById('playStyle').value;
+    const c = document.getElementById('playColor').value;
+    document.getElementById('playWidthVal').textContent = w + 'px';
+    document.getElementById('playRadiusVal').textContent = r + 'px';
+    const box = document.getElementById('playBox');
+    box.style.borderWidth = w + 'px';
+    box.style.borderRadius = r + 'px';
+    box.style.borderStyle = s;
+    box.style.borderColor = c;
+    document.getElementById('playCode').textContent =
+      'border: ' + w + 'px ' + s + ' ' + c + ';\nborder-radius: ' + r + 'px;';
+  }
+  ['playWidth','playRadius','playStyle','playColor'].forEach(id => {
+    document.getElementById(id).addEventListener('input', updatePlay);
+  });
+  updatePlay();
+
+  // ---- SLIDE 10: exercicio (input livre) ----
+  const typeInput = document.getElementById('typeInput');
+  const typeBox = document.getElementById('typeBox');
+  const typeCode = document.getElementById('typeCode');
+  const typeFeedback = document.getElementById('typeFeedback');
+
+  typeInput.addEventListener('input', () => {
+    const value = typeInput.value.trim();
+
+    if(value === ''){
+      typeBox.style.border = 'none';
+      typeBox.textContent = 'seu border aqui';
+      typeCode.textContent = 'border: /* digite ao lado */;';
+      typeFeedback.innerHTML = 'Use a fórmula <b class="accent">width style color</b> — por exemplo: <span class="teal">3px dashed tomato</span>';
+      return;
+    }
+
+    // CSS.supports valida a sintaxe sem efeitos colaterais — a forma correta de checar
+    const accepted = CSS.supports('border', value);
+
+    // além de sintaticamente válido, exigimos que exista um "style" real (solid, dashed...)
+    // porque "border: red;" é válido mas fica invisível (style default é none)
+    const hasVisibleStyle = /\b(solid|dashed|dotted|double|groove|ridge|inset|outset)\b/i.test(value);
+
+    if(accepted && hasVisibleStyle){
+      typeBox.style.border = value;
+      typeBox.textContent = 'funcionou ✓';
+      typeCode.textContent = 'border: ' + value + ';';
+      typeFeedback.innerHTML = '<span class="teal">✓ CSS válido</span> — o navegador entendeu e aplicou.';
+    } else if(accepted && !hasVisibleStyle){
+      typeBox.style.border = 'none';
+      typeBox.textContent = 'sem style = invisível';
+      typeCode.textContent = 'border: ' + value + '; /* falta um style, ex: solid */';
+      typeFeedback.innerHTML = '<span class="accent">quase</span> — sintaxe válida, mas sem <b>border-style</b> a borda fica invisível.';
+    } else {
+      typeBox.style.border = 'none';
+      typeBox.textContent = 'não aplicado';
+      typeCode.textContent = 'border: ' + value + '; /* inválido */';
+      typeFeedback.innerHTML = '<span class="accent">✗ isso não é um border válido</span> — confira a ordem: largura, estilo, cor.';
+    }
+  });
+</script>
+
+</body>
+</html>
