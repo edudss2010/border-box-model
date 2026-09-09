@@ -7,7 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
 
@@ -24,9 +23,84 @@
     <p class="footer-note">Use as setas do teclado ou os botões abaixo para avançar.</p>
   </section>
 
-  <!-- SLIDE 1: ANATOMIA -->
+  <!-- SLIDE 1: BOX MODEL -->
   <section class="slide">
-    <div class="eyebrow">01 · Anatomia</div>
+    <div class="eyebrow">01 · fundamentos</div>
+    <h2>Onde o border vive: o box model</h2>
+    <div class="split">
+      <div class="stage">
+        <div class="box-model" id="boxModel">
+          <div class="bm-layer bm-margin">
+            <span class="bm-label">margin</span>
+            <div class="bm-layer bm-border">
+              <span class="bm-label">border</span>
+              <div class="bm-layer bm-padding">
+                <span class="bm-label">padding</span>
+                <div class="bm-layer bm-content">content</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="controls">
+        <p>Todo elemento HTML é uma caixa formada por quatro camadas, de dentro para fora: <b class="teal">content</b>, <b class="accent">padding</b>, <b>border</b> e <b class="teal">margin</b>.</p>
+        <div class="ctrl-row">
+          <label>padding <span class="val" id="bmPaddingVal">16px</span></label>
+          <input type="range" id="bmPadding" min="0" max="40" value="16">
+        </div>
+        <div class="ctrl-row">
+          <label>border-width <span class="val" id="bmBorderVal">8px</span></label>
+          <input type="range" id="bmBorder" min="0" max="24" value="8">
+        </div>
+        <div class="ctrl-row">
+          <label>margin <span class="val" id="bmMarginVal">14px</span></label>
+          <input type="range" id="bmMargin" min="0" max="40" value="14">
+        </div>
+        <p class="footer-note">O <b class="accent">border</b> fica sempre entre o padding e a margin — ele nunca encosta direto no conteúdo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 2: ESTRUTURA DO CODIGO -->
+  <section class="slide">
+    <div class="eyebrow">02 · sintaxe</div>
+    <h2>Como o código de um border é montado</h2>
+    <div class="controls" style="gap:26px;">
+      <div>
+        <p class="footer-note" style="margin-bottom:10px;">Toda declaração CSS segue essa forma:</p>
+        <div class="syntax-line">
+          <span class="syn-tok syn-generic">seletor</span>
+          <span class="syn-tok syn-generic">{</span>
+          <span class="syn-tok syn-generic">propriedade</span>
+          <span class="syn-tok syn-generic">:</span>
+          <span class="syn-tok syn-generic">valor</span>
+          <span class="syn-tok syn-generic">;</span>
+          <span class="syn-tok syn-generic">}</span>
+        </div>
+      </div>
+      <div>
+        <p class="footer-note" style="margin-bottom:10px;">E o <b class="accent">border</b> encaixa três valores no lugar de "valor", nessa ordem:</p>
+        <div class="syntax-line">
+          <span class="syn-tok syn-prop">border</span>
+          <span class="syn-tok syn-generic">:</span>
+          <span class="syn-tok syn-width">3px</span>
+          <span class="syn-tok syn-style">solid</span>
+          <span class="syn-tok syn-color">#E8A33D</span>
+          <span class="syn-tok syn-generic">;</span>
+        </div>
+        <div class="syntax-legend">
+          <div class="legend-item"><span class="dot syn-width"></span> largura</div>
+          <div class="legend-item"><span class="dot syn-style"></span> estilo</div>
+          <div class="legend-item"><span class="dot syn-color"></span> cor</div>
+        </div>
+      </div>
+      <p class="footer-note">A ordem entre width/style/color não é obrigatória, mas <b>border-style</b> é o único obrigatório — sem ele, a borda não aparece mesmo com largura e cor definidas.</p>
+    </div>
+  </section>
+
+  <!-- SLIDE 3: ANATOMIA -->
+  <section class="slide">
+    <div class="eyebrow">03 · Anatomia</div>
     <h2>Toda borda tem três dimensões</h2>
     <div class="split">
       <div class="stage">
@@ -45,14 +119,14 @@
 
   <!-- SLIDE 2: BORDER-STYLE -->
   <section class="slide">
-    <div class="eyebrow">02 · border-style</div>
+    <div class="eyebrow">04 · border-style</div>
     <h2>Nove traços possíveis</h2>
     <div class="style-grid" id="styleGrid"></div>
   </section>
 
   <!-- SLIDE 3: BORDER-WIDTH -->
   <section class="slide">
-    <div class="eyebrow">03 · border-width</div>
+    <div class="eyebrow">05 · border-width</div>
     <h2>Controlando a espessura</h2>
     <div class="split">
       <div class="stage">
@@ -70,7 +144,7 @@
 
   <!-- SLIDE 4: BORDER-COLOR -->
   <section class="slide">
-    <div class="eyebrow">04 · border-color</div>
+    <div class="eyebrow">06 · border-color</div>
     <h2>Uma cor por lado, se você quiser</h2>
     <div class="split">
       <div class="stage">
@@ -89,7 +163,7 @@
 
   <!-- SLIDE 5: SHORTHAND -->
   <section class="slide">
-    <div class="eyebrow">05 · shorthand</div>
+    <div class="eyebrow">07 · shorthand</div>
     <h2>As três propriedades em uma linha</h2>
     <div class="split">
       <div class="stage">
@@ -121,7 +195,7 @@
 
   <!-- SLIDE 6: LADOS INDIVIDUAIS -->
   <section class="slide">
-    <div class="eyebrow">06 · lados independentes</div>
+    <div class="eyebrow">08 · lados independentes</div>
     <h2>top, right, bottom, left</h2>
     <div class="split">
       <div class="stage">
@@ -142,7 +216,7 @@
 
   <!-- SLIDE 7: BORDER-RADIUS -->
   <section class="slide">
-    <div class="eyebrow">07 · border-radius</div>
+    <div class="eyebrow">09 · border-radius</div>
     <h2>Arredondando os quatro cantos</h2>
     <div class="split">
       <div class="stage">
@@ -161,7 +235,7 @@
 
   <!-- SLIDE 8: BORDER-IMAGE -->
   <section class="slide">
-    <div class="eyebrow">08 · border-image</div>
+    <div class="eyebrow">10 · border-image</div>
     <h2>Bordas com gradiente ou textura</h2>
     <div class="split">
       <div class="stage">
@@ -180,7 +254,7 @@
 
   <!-- SLIDE 9: PLAYGROUND -->
   <section class="slide">
-    <div class="eyebrow">09 · playground</div>
+    <div class="eyebrow">11 · playground</div>
     <h2>Monte sua própria borda</h2>
     <div class="split">
       <div class="stage">
@@ -217,7 +291,7 @@
 
   <!-- SLIDE 10: EXERCICIO -->
   <section class="slide">
-    <div class="eyebrow">10 · sua vez</div>
+    <div class="eyebrow">12 · sua vez</div>
     <h2>Digite um border e veja acontecer</h2>
     <div class="split">
       <div class="stage">
@@ -237,7 +311,7 @@
 
   <!-- SLIDE 11: RECAP -->
   <section class="slide">
-    <div class="eyebrow">11 · resumo</div>
+    <div class="eyebrow">13 · resumo</div>
     <h2>Cheatsheet</h2>
     <ul class="plain">
       <li><b>border: width style color;</b> — forma curta mais comum</li>
@@ -286,7 +360,23 @@
     if(e.key === 'ArrowLeft') goTo(current - 1);
   });
 
-  // ---- SLIDE 2: style grid ----
+  // ---- SLIDE 1: box model ----
+  const bmMargin = document.getElementById('bmMargin');
+  const bmBorder = document.getElementById('bmBorder');
+  const bmPadding = document.getElementById('bmPadding');
+  function updateBoxModel(){
+    const m = bmMargin.value, b = bmBorder.value, p = bmPadding.value;
+    document.getElementById('bmMarginVal').textContent = m + 'px';
+    document.getElementById('bmBorderVal').textContent = b + 'px';
+    document.getElementById('bmPaddingVal').textContent = p + 'px';
+    document.querySelector('.bm-margin').style.padding = m + 'px';
+    document.querySelector('.bm-border').style.padding = b + 'px';
+    document.querySelector('.bm-padding').style.padding = p + 'px';
+  }
+  [bmMargin, bmBorder, bmPadding].forEach(el => el.addEventListener('input', updateBoxModel));
+  updateBoxModel();
+
+  // ---- SLIDE 4: style grid ----
   const styles = ['solid','dashed','dotted','double','groove','ridge','inset','outset','none'];
   const styleGrid = document.getElementById('styleGrid');
   styles.forEach(s => {
